@@ -1,0 +1,19 @@
+# python generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.lock
+
+# venv
+.venv
+
+# nodejs
+# Dependency directories
+node_modules/
+package-lock.json
+
+# localdatabase
+db.sqlite3

@@ -1,0 +1,101 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html class="h-full bg-white">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+        <title>
+            {% block head_title %}
+            {% endblock head_title %}
+        </title>
+        {% block extra_head %}
+        {% endblock extra_head %}
+    </head>
+    <body class="h-full">
+        {% block body %}
+            {% if messages %}
+                <div>
+                    <strong>{% trans "Messages:" %}</strong>
+                    <ul>
+                        {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="flex absolute shadow-lg w-full bg-white h-10  items-center">
+                <div class="grid grid-cols-2 w-full">
+                    <div><span class="ml-2 font-extrabold text-sky-900 text-2xl">PRODUCT MANAGEMENT</span><span class="ml-2 font-extrabold text-sky-600 text-xl">FLDEV</span></div>
+                    <div class="justify-self-end content-center">
+                        <ul class="flex mr-3">                           
+                            {% if user.is_authenticated %}
+                                {% url 'account_email' as email_url_ %}
+                                {% if email_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ email_url_ }} {% if request.path == email_url_ %} class="underline" {% endif %}">{% trans "Change Email" %}</a>
+                                    </li>
+                                {% endif %}
+                                {% url 'account_change_password' as change_password_url_ %}
+                                {% if change_password_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ change_password_url_ }}" {% if request.path == change_password_url_ %} class="underline" {% endif %}>{% trans "Change Password" %}</a>
+                                    </li>
+                                {% endif %}
+                                {% url 'socialaccount_connections' as connections_url_ %}
+                                {% if connections_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ connections_url_ }}" {% if request.path == connections_url_ %} class="underline" {% endif %}>{% trans "Account Connections" %}</a>
+                                    </li>
+                                {% endif %}
+                                {% url 'mfa_index' as mfa_url_ %}
+                                {% if mfa_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ mfa_url_ }}" {% if request.path == mfa_url_ %} class="underline" {% endif %}>{% trans "Two-Factor Authentication" %}</a>
+                                    </li>
+                                {% endif %}
+                                {% url 'usersessions_list' as usersessions_list_url_ %}
+                                {% if usersessions_list_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ usersessions_list_url_ }}" {% if request.path == usersessions_list_url_ %} class="underline" {% endif %}>{% trans "Sessions" %}</a>
+                                    </li>
+                                {% endif %}
+                                {% url 'account_logout' as logout_url_ %}
+                                {% if logout_url_ %}
+                                    <li class="ml-3">
+                                        <a href="{{ logout_url_ }}" {% if request.path == logout_url_ %} class="underline" {% endif %}>{% trans "Sign Out" %}</a>
+                                    </li>
+                                {% endif %}
+                            {% else %}
+                                {% url 'account_login' as login_url_ %}
+                                {% if login_url_ %}
+                                    <li class="ml-3">
+                                        {% if request.path == login_url_ %}
+                                        <span class="text-sky-800 font-bold">{% trans "Sign In" %}</span>
+                                        {% else %}
+                                        <a href="{{ login_url_ }}" class="underline hover:text-sky-800">{% trans "Sign In" %}</a>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                                {% url 'account_signup' as signup_url_ %}
+                                {% if signup_url_ %}
+                                    <li class="ml-3">
+                                        {% if request.path == signup_url_ %}
+                                        <span class="text-sky-800 font-bold">{% trans "Sign Up" %}</span>
+                                        {% else %}
+                                        <a href="{{ signup_url_ }}" class="underline hover:text-sky-800">{% trans "Sign Up" %}</a>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% block content %}
+            {% endblock content %}
+        {% endblock body %}
+        {% block extra_body %}
+        {% endblock extra_body %}
+    </body>
+</html>
