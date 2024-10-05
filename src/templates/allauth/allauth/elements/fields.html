@@ -1,0 +1,11 @@
+{% for field in attrs.form %}
+    <div class="field {{field.name}}">
+        {{ field.label_tag }} {{ field }}
+        {% if field.errors != "" %}
+        {{ field.errors }}
+        {% endif %}
+        {% if field.help_text != "" %}
+        <span class="helper">{{ field.help_text|safe }}</span>
+        {% endif %}
+    </div>
+{% endfor %}

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .sign {
+        a {
+            @apply text-sky-600 font-semibold hover:underline;
+        }
+        form {
+            label {
+                @apply block my-2 ml-1 text-sm;        
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"] {
+                @apply border rounded-md w-full p-2 text-gray-600;
+            }
+            .helper {
+                @apply my-2 block;
+                ul {
+                    @apply p-2 bg-gray-50 border border-gray-100 rounded-md;
+                    li {
+                        @apply text-sm text-gray-500;
+                        &:first-child {
+                            @apply font-bold;
+                        }    
+                    }
+                }
+            }
+            .remember {
+                @apply flex items-center;
+                label {
+                    @apply inline;
+                }
+                input[type="checkbox"] {
+                    @apply size-4 ml-2;
+                }
+            }
+            .errorlist {
+                @apply mt-2;
+                li {
+                    @apply text-red-400 text-sm ml-2;
+                    &:first-child {
+                        @apply font-bold;
+                    }
+                }        
+            }
+        }
+    }
+}
