@@ -1,6 +1,6 @@
 {% load allauth %}
 {{ attrs.errors }}
-<p>
+<div class="flex border rounded-lg px-2 my-2 bg-gray-100">
     {% if attrs.type == "textarea" %}
         <label for="{{ attrs.id }}">
             {% slot label %}
@@ -44,4 +44,4 @@
             {% endslot %}
         </span>
     {% endif %}
-</p>
+    </div>

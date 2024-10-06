@@ -4,7 +4,9 @@
     {% trans "Sign Out" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
+<div class="sign flex items-center justify-center bg-login h-full">
+    <div class="w-auto lg:w-2/4 mx-2 sm:mx-0 border border-gray-50 rounded-lg shadow-lg p-8 bg-white">
+    {% element h1 class="h1" %}
         {% trans "Sign Out" %}
     {% endelement %}
     {% element p %}
@@ -17,9 +19,11 @@
             {{ redirect_field }}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" %}
+            {% element button type="submit" class="btn btn-base btn-danger w-32 mt-2" %}
                 {% trans 'Sign Out' %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
+    </div>
+</div>
 {% endblock content %}

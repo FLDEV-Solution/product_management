@@ -4,7 +4,9 @@
     {% trans "Email Addresses" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
+<div class="sign flex items-center justify-center bg-login h-full">
+    <div class="w-auto lg:w-2/4 mx-2 sm:mx-0 border border-gray-50 rounded-lg shadow-lg p-8 bg-white">
+    {% element h1 class="h1" %}
         {% trans "Email Addresses" %}
     {% endelement %}
     {% if emailaddresses %}
@@ -40,13 +42,13 @@
                 {% endfor %}
             {% endslot %}
             {% slot actions %}
-                {% element button type="submit" name="action_primary" %}
+                {% element button type="submit" name="action_primary" class="btn btn-xs btn-primary" %}
                     {% trans 'Make Primary' %}
                 {% endelement %}
-                {% element button tags="secondary" type="submit" name="action_send" %}
+                {% element button tags="secondary" type="submit" name="action_send" class="btn btn-xs btn-secondary" %}
                     {% trans 'Re-send Verification' %}
                 {% endelement %}
-                {% element button tags="danger,delete" type="submit" name="action_remove" %}
+                {% element button tags="danger,delete" type="submit" name="action_remove" class="btn btn-xs btn-danger" %}
                     {% trans 'Remove' %}
                 {% endelement %}
             {% endslot %}
@@ -55,7 +57,7 @@
         {% include "account/snippets/warn_no_email.html" %}
     {% endif %}
     {% if can_add_email %}
-        {% element h2 %}
+        {% element h2 class="h2" %}
             {% trans "Add Email Address" %}
         {% endelement %}
         {% url 'account_email' as action_url %}
@@ -66,12 +68,14 @@
                 {% endelement %}
             {% endslot %}
             {% slot actions %}
-                {% element button name="action_add" type="submit" %}
+                {% element button name="action_add" type="submit" class="btn btn-xs btn-primary mt-2" %}
                     {% trans "Add Email" %}
                 {% endelement %}
             {% endslot %}
         {% endelement %}
     {% endif %}
+    </div>
+</div>
 {% endblock content %}
 {% block extra_body %}
     <script>

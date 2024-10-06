@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
 
     # FLDEV Product Management
-    'accounts',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / "templates/allauth"
+            BASE_DIR / "../templates/allauth"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'product_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / '../db.sqlite3',
     }
 }
 
@@ -125,7 +125,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale/allauth',
+    BASE_DIR / '../locale/allauth',
 ]
 
 # Static files (CSS, JavaScript, Images)
@@ -134,7 +134,7 @@ LOCALE_PATHS = [
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Global static directory
+    BASE_DIR / "../static",  # Global static directory
 ]
 
 # Default primary key field type
