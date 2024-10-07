@@ -1,3 +1,182 @@
+.alert {
+  border-radius: 0.5rem;
+  border-width: 1px;
+  padding: 0.5rem;
+  &.alert-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  &.alert-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  &.alert-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  &.alert-error {
+    --tw-border-opacity: 1;
+    border-color: rgb(252 165 165 / var(--tw-border-opacity));
+  }
+  &.alert-error {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+  }
+  &.alert-error {
+    --tw-text-opacity: 1;
+    color: rgb(185 28 28 / var(--tw-text-opacity));
+  }
+}
+
+.btn {
+  width: auto;
+  border-width: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  &.btn-xs {
+    border-radius: 0.375rem;
+  }
+  &.btn-xs {
+    padding: 0.5rem;
+  }
+  &.btn-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  &.btn-sm {
+    border-radius: 0.375rem;
+  }
+  &.btn-sm {
+    padding: 0.5rem;
+  }
+  &.btn-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  &.btn-base {
+    border-radius: 0.375rem;
+  }
+  &.btn-base {
+    padding: 0.5rem;
+  }
+  &.btn-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  &.btn-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+  }
+  &.btn-primary {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-primary:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(7 89 133 / var(--tw-bg-opacity));
+  }
+  &.btn-primary:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+  }
+  &.btn-secondary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+  }
+  &.btn-secondary {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-secondary:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(107 33 168 / var(--tw-bg-opacity));
+  }
+  &.btn-secondary:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+  }
+  &.btn-ternary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+  }
+  &.btn-ternary {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-ternary:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(7 89 133 / var(--tw-bg-opacity));
+  }
+  &.btn-ternary:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+  }
+  &.btn-sucess {
+    --tw-bg-opacity: 1;
+    background-color: rgb(14 116 144 / var(--tw-bg-opacity));
+  }
+  &.btn-sucess {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-sucess:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(21 94 117 / var(--tw-bg-opacity));
+  }
+  &.btn-sucess:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(8 145 178 / var(--tw-bg-opacity));
+  }
+  &.btn-warning {
+    --tw-bg-opacity: 1;
+    background-color: rgb(161 98 7 / var(--tw-bg-opacity));
+  }
+  &.btn-warning {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-warning:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(133 77 14 / var(--tw-bg-opacity));
+  }
+  &.btn-warning:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+  }
+  &.btn-danger {
+    --tw-bg-opacity: 1;
+    background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+  }
+  &.btn-danger {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-danger:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+  }
+  &.btn-danger:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  }
+  &.btn-cancel {
+    --tw-bg-opacity: 1;
+    background-color: rgb(68 64 60 / var(--tw-bg-opacity));
+  }
+  &.btn-cancel {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  &.btn-cancel:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(41 37 36 / var(--tw-bg-opacity));
+  }
+  &.btn-cancel:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(87 83 78 / var(--tw-bg-opacity));
+  }
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -554,17 +733,81 @@ video {
   display: none;
 }
 
-.sign {
-  a {
-    font-weight: 600;
+a {
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(2 132 199 / var(--tw-text-opacity));
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+.form {
+  label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
-  a {
+  label {
+    margin-left: 0.25rem;
+  }
+  label {
+    display: block;
+  }
+  label {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+    width: 100%;
+  }
+  input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+    border-radius: 0.375rem;
+  }
+  input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+    border-width: 1px;
+  }
+  input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+    padding: 0.5rem;
+  }
+  input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
     --tw-text-opacity: 1;
-    color: rgb(2 132 199 / var(--tw-text-opacity));
+    color: rgb(75 85 99 / var(--tw-text-opacity));
   }
-  a:hover {
-    text-decoration-line: underline;
+  .errorlist {
+    margin-top: 0.5rem;
   }
+  .errorlist {
+    li {
+      margin-left: 0.5rem;
+    }
+    li {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+    li {
+      --tw-text-opacity: 1;
+      color: rgb(248 113 113 / var(--tw-text-opacity));
+    }
+  }
+}
+
+.sign {
   form {
     label {
       margin-top: 0.5rem;
@@ -689,7 +932,7 @@ video {
   }
 }
 
-.h1 {
+h1 {
   font-size: 1.875rem;
   font-weight: 700;
   line-height: 2.25rem;
@@ -698,137 +941,13 @@ video {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.h2 {
-  margin-top: 0.75rem;
+h2 {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 2.25rem;
   letter-spacing: -0.025em;
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.btn {
-  width: auto;
-  border-radius: 0.375rem;
-  border-width: 1px;
-  &.btn-xs {
-    padding: 0.5rem;
-  }
-  &.btn-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-  &.btn-sm {
-    padding: 0.5rem;
-  }
-  &.btn-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-  &.btn-base {
-    padding: 0.5rem;
-  }
-  &.btn-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-  &.btn-primary {
-    --tw-bg-opacity: 1;
-    background-color: rgb(3 105 161 / var(--tw-bg-opacity));
-  }
-  &.btn-primary {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-primary:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(7 89 133 / var(--tw-bg-opacity));
-  }
-  &.btn-primary:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(2 132 199 / var(--tw-bg-opacity));
-  }
-  &.btn-secondary {
-    --tw-bg-opacity: 1;
-    background-color: rgb(126 34 206 / var(--tw-bg-opacity));
-  }
-  &.btn-secondary {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-secondary:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(107 33 168 / var(--tw-bg-opacity));
-  }
-  &.btn-secondary:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(147 51 234 / var(--tw-bg-opacity));
-  }
-  &.btn-ternary {
-    --tw-bg-opacity: 1;
-    background-color: rgb(3 105 161 / var(--tw-bg-opacity));
-  }
-  &.btn-ternary {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-ternary:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(7 89 133 / var(--tw-bg-opacity));
-  }
-  &.btn-ternary:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(2 132 199 / var(--tw-bg-opacity));
-  }
-  &.btn-sucess {
-    --tw-bg-opacity: 1;
-    background-color: rgb(14 116 144 / var(--tw-bg-opacity));
-  }
-  &.btn-sucess {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-sucess:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(21 94 117 / var(--tw-bg-opacity));
-  }
-  &.btn-sucess:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(8 145 178 / var(--tw-bg-opacity));
-  }
-  &.btn-warning {
-    --tw-bg-opacity: 1;
-    background-color: rgb(161 98 7 / var(--tw-bg-opacity));
-  }
-  &.btn-warning {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-warning:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(133 77 14 / var(--tw-bg-opacity));
-  }
-  &.btn-warning:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(202 138 4 / var(--tw-bg-opacity));
-  }
-  &.btn-danger {
-    --tw-bg-opacity: 1;
-    background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-  }
-  &.btn-danger {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-  &.btn-danger:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(153 27 27 / var(--tw-bg-opacity));
-  }
-  &.btn-danger:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-  }
 }
 
 .static {
@@ -854,12 +973,20 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
 
 .ml-3 {
   margin-left: 0.75rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
 }
 
 .mr-3 {
@@ -938,6 +1065,10 @@ video {
   flex: none;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -956,6 +1087,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .justify-self-end {
@@ -1002,6 +1137,10 @@ video {
   background-image: url('/static/images/bg-login.webp');
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -1025,14 +1164,14 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .pt-0\.5 {
@@ -1155,10 +1294,5 @@ video {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .lg\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }

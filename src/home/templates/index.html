@@ -1,16 +1,44 @@
-{% extends "layouts/base_home.html" %}
+{% extends "layouts/base.html" %}
 {% load i18n %}
+{% load account %}
 
 {% block head_title %}
-    {% trans "Produtos" %}
+    {% trans "Bem vindo" %}
 {% endblock head_title %}
 
 {% block header %}
-<h1 class="text-3xl font-bold tracking-tight text-gray-900">Produtos</h1>
+    {% user_display user as user_display %}
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+        {% if user.first_name == "" %}
+            {% blocktrans %}Olá {{ user }}, seja bem vindo!{% endblocktrans %}
+        {% else %}
+            {% blocktrans %}Olá {{ user.first_name }}, seja bem vindo!{% endblocktrans %}
+        {% endif %}
+    </h1>
 {% endblock header %}
 
 {% block main %}
-asd
+<div class="grid grid-cols-1">
+    <div>
+        <div class="flex justify-between items-center mb-2">
+            <h2>{% trans "Produtos" %}</h2>
+            <a href="{% url 'product_create' %}" class="btn btn-xs btn-primary"><i class="fa-solid fa-plus mr-1"></i>{% trans "Criar um novo Produto" %}</a>
+        </div>
+        
+        <div class="border rounded-md p-2">
+            <ul>
+            {% for product in products %}
+                <li class="flex justify-between items-center">
+                    <a href="#">{{ product.name }}</a>
+                    <div>
+                        <a href="#" class="btn btn-xs btn-secondary"><i class="fa-solid fa-pen mr-1"></i>{% trans "Editar" %}</a><a href="#" class="btn btn-xs btn-danger"><i class="fa-solid fa-xmark mr-1"></i>{% trans "Remover" %}</a>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock main %}
 
 {% block extra_body %}

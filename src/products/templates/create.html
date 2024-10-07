@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}
+    {% trans "Produto" %}
+{% endblock head_title %}
+
+{% block header %}
+    {% user_display user as user_display %}
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+        {% trans "Produto" %}
+    </h1>
+{% endblock header %}
+
+{% block main %}
+<div class="grid grid-cols-1">
+    <div>
+        <div class="flex justify-between items-center mb-2">
+            <h2>{% trans "Criar um novo produto" %}</h2>
+            <a href="/" class="btn btn-xs btn-cancel"><i class="fa-solid fa-plus mr-1"></i>{% trans "Cancelar" %}</a>
+        </div>
+
+        <div class="border rounded-md p-2">
+            <form method="post" action="{% url 'product_create' %}" class="form">
+                {% csrf_token %}
+
+                <ul class="alert alert-error alert-sm">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li><strong>{{field.label}}</strong>: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+
+                {% for field in form %}
+                <div class="field {{field.name}}">
+                    {{ field.label_tag }} {{ field }}
+                    {% if field.errors != "" %}
+                    {{ field.errors }}
+                    {% endif %}
+                    {% if field.help_text != "" %}
+                    <span class="helper">{{ field.help_text|safe }}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <div class="flex justify-end">
+                    <button type="submit" class="btn btn-base btn-primary mt-4">{% trans "criar produto" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block extra_body %}
+    {{ block.super }}
+{% endblock %}

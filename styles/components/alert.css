@@ -1,0 +1,19 @@
+.alert {
+    @apply border rounded-lg p-2;
+
+    &.alert-xs {
+        @apply text-xs;
+    }
+
+    &.alert-sm {
+        @apply text-sm;
+    }
+
+    &.alert-base {
+        @apply text-base;
+    }
+
+    &.alert-error {
+        @apply border-red-300 bg-red-100 text-red-700;
+    }
+}

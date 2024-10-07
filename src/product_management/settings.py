@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -38,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third-party software
+    'debug_toolbar',
+    'django_quill',
+
     # django-allauth apps
     'django.contrib.sites',  # Required by django-allauth
     'allauth',
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
 
     # FLDEV Product Management
     'home',
+    'products'
 ]
 
 MIDDLEWARE = [
@@ -56,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
 ]
@@ -66,7 +76,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / "../templates/allauth"
+            BASE_DIR / "../templates/allauth",
+            BASE_DIR / "../templates/apps"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -142,6 +153,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# AUTHENTICATION - ALLALTH
+
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
@@ -149,7 +162,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',  # For django-allauth
 ]
 
-# myproject/settings.py
+# ACCOUNT_USER_DISPLAY = user.username
 
 # Redirect URLs
 LOGIN_REDIRECT_URL = '/'

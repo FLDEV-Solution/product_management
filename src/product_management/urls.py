@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('', include('products.urls')),
     path('accounts/', include('accounts.urls')),  # Your custom accounts app
     path('accounts/', include('allauth.urls')),   # django-allauth
-]
+] + debug_toolbar_urls()

@@ -1,0 +1,43 @@
+.btn {
+    @apply border w-auto font-bold uppercase;
+
+    &.btn-xs {
+        @apply p-2 rounded-md text-xs;
+    }
+
+    &.btn-sm {
+        @apply p-2 rounded-md text-sm;
+    }
+
+    &.btn-base {
+        @apply p-2 rounded-md text-base;
+    }
+
+    &.btn-primary {
+        @apply bg-sky-700 hover:bg-sky-800 active:bg-sky-600 text-white;
+    }
+
+    &.btn-secondary {
+        @apply bg-purple-700 hover:bg-purple-800 active:bg-purple-600 text-white;
+    }
+
+    &.btn-ternary {
+        @apply bg-sky-700 hover:bg-sky-800 active:bg-sky-600 text-white;
+    }
+
+    &.btn-sucess {
+        @apply bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-600 text-white;
+    }
+
+    &.btn-warning {
+        @apply bg-yellow-700 hover:bg-yellow-800 active:bg-yellow-600 text-white;
+    }
+
+    &.btn-danger {
+        @apply bg-red-700 hover:bg-red-800 active:bg-red-600 text-white;
+    }
+
+    &.btn-cancel {
+        @apply bg-stone-700 hover:bg-stone-800 active:bg-stone-600 text-white;
+    }
+}

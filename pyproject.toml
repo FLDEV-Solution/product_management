@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "django==5.1",
     "django-allauth[socialaccount]>=65.0.2",
+    "django-debug-toolbar>=4.4.6",
+    "django-quill-editor>=0.1.42",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

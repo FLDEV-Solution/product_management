@@ -1,4 +1,9 @@
 {% extends "allauth/layouts/base.html" %}
+
+{% block extra_head %}
+    {% include 'django_quill/media.html' %}
+{% endblock %}
+
 {% block content %}
 <div class="min-h-full bg-gray-100 bg-login">
     <div class="h-10">&nbsp;</div>
