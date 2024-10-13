@@ -18,6 +18,7 @@
 {% endblock header %}
 
 {% block main %}
+{% csrf_token %}
 <div class="grid grid-cols-1">
     <div>
         <div class="flex justify-between items-center mb-2">
@@ -26,16 +27,21 @@
         </div>
         
         <div class="border rounded-md p-2">
-            <ul>
-            {% for product in products %}
-                <li class="flex justify-between items-center">
-                    <a href="#">{{ product.name }}</a>
-                    <div>
-                        <a href="#" class="btn btn-xs btn-secondary"><i class="fa-solid fa-pen mr-1"></i>{% trans "Editar" %}</a><a href="#" class="btn btn-xs btn-danger"><i class="fa-solid fa-xmark mr-1"></i>{% trans "Remover" %}</a>
-                    </div>
-                </li>
-            {% endfor %}
-            </ul>
+            {% if products|length > 0 %}
+                <ul>
+                {% for product in products %}
+                    <li class="flex justify-between items-center h-10">
+                        <a href="{% url 'product_update' product.uuid %}">{{ product.name }}</a>
+                        <div class="flex">
+                            <a href="{% url 'product_update' product.uuid %}" class="btn btn-xs btn-ternary mr-2"><i class="fa-solid fa-pen mr-1"></i>{% trans "Editar" %}</a>
+                            <a href="javascript:void(0)" class="btn btn-xs btn-danger" data-dialog-confirm="danger" data-id="{{product.uuid}}" data-token="{{ csrf_token }}"><i class="fa-solid fa-xmark mr-1"></i>{% trans "Remover" %}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p class=""><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-xl"></i> {% trans "Nenhum produto cadastrado, clique em criar um novo produto." %}</p>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -43,4 +49,13 @@
 
 {% block extra_body %}
     {{ block.super }}
+    {% translate "ATENÇÃO! Ação Inreversível" as title %}
+    {% translate "Atenção! Essa ação é inreversível, então verifique novamente essa ação" as message %}
+    {% translate "REMOVER" as bt_confirm %}
+    {% include "components/dialog.html" with type="danger" title=title message=message bt_confirm=bt_confirm %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        dialog_onload();
+    });
+    </script>
 {% endblock %}

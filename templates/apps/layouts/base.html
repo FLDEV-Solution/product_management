@@ -5,19 +5,16 @@
 {% endblock %}
 
 {% block content %}
+<div class="bg-white shadow fixed top-10 w-full z-40">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+        {% block header %}{% endblock %}
+    </div>
+</div>
 <div class="min-h-full bg-gray-100 bg-login">
-    <div class="h-10">&nbsp;</div>
-    <header class="bg-white shadow">
-        <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            {% block header %}{% endblock %}
-        </div>
-    </header>
-    <main>
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 bg-white shadow mt-4 rounded-md">
-            <div class="bg-white">
+    <div class="pt-32 pb-6 bg-transparent">
+        <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 bg-white shadow rounded-md">
             {% block main %}{% endblock %}
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </div>
 {% endblock %}

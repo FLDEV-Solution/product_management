@@ -10,6 +10,7 @@
         <title>
             {% block head_title %}
             {% endblock head_title %}
+            - Product Management - FLDEV
         </title>
         {% block extra_head %}
         {% endblock extra_head %}
@@ -24,9 +25,9 @@
                     </ul>
                 </div>
             {% endif %}
-            <div class="flex absolute shadow-lg w-full bg-white h-10  items-center">
+            <div class="flex shadow-lg w-full bg-white h-10 items-center fixed top-0 z-50">
                 <div class="grid grid-cols-2 w-full">
-                    <div><a href="/" class="ml-2 font-extrabold text-sky-900 text-2xl">PRODUCT MANAGEMENT</a><a href="/" class="ml-2 font-extrabold text-sky-600 text-xl">FLDEV</a></div>
+                    <div><a href="/" class="ml-2 logo">PRODUCT MANAGEMENT</a><a href="/" class="ml-2 brand">FLDEV</a></div>
                     <div class="justify-self-end content-center">
                         <ul class="flex mr-3">                           
                             {% if user.is_authenticated %}

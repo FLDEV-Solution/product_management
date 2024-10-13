@@ -1,0 +1,93 @@
+{% extends "layouts/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}
+    {% trans "Produto" %}
+{% endblock head_title %}
+
+{% block header %}
+    {% user_display user as user_display %}
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            {% trans "Produto" %}
+        </h1>
+    </div>
+{% endblock header %}
+
+{% block main %}
+<div class="grid grid-cols-1">
+    <form method="post" action="{%if action == 'create' %}{% url 'product_create' %}{% else %}{% url 'product_update' uuid %}{% endif %}" class="form">
+        {% csrf_token %}
+        <div class="flex justify-between items-center mb-2">
+            <h2>
+                {%if action == 'create' %}
+                    {% trans "Criar um novo produto" %}
+                {%elif action == 'update' %}
+                    {% trans "Alterar o produto" %} <span class="text-blue-800">{{ product.name }}</span>
+                {% endif %}
+            </h2>
+            <div class="btn-actions btn-actions-right">
+                {%if action == 'create' %}
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> {% trans "criar produto" %}</button>
+                {%elif action == 'update' %}
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i> {% trans "atualizar" %}</button>
+                    <a href="#" class="btn btn-sm btn-danger" data-dialog-confirm="danger" data-id="{{product.uuid}}" data-token="{{ csrf_token }}"><i class="fa-solid fa-trash-can"></i> {% trans "remover" %}</a>
+                {% endif %}
+                <a href="/" class="btn btn-sm btn-cancel"><i class="fa-solid fa-xmark"></i> {% trans "Cancelar" %}</a>
+            </div>
+        </div>
+
+        <div class="border rounded-md p-2">
+            {% if form.errors %}
+            <ul class="alert alert-error alert-sm">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li><strong>{{field.label}}</strong>: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% for field in form %}
+            <div class="field {{field.name}}">
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors != "" %}
+                {{ field.errors }}
+                {% endif %}
+                {% if field.help_text != "" %}
+                <span class="helper">{{ field.help_text|safe }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div class="flex justify-end">
+                <div class="btn-actions btn-actions-right">
+                    {%if action == 'create' %}
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> {% trans "criar produto" %}</button>
+                    {%elif action == 'update' %}
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i> {% trans "atualizar" %}</button>
+                        <a href="#" class="btn btn-sm btn-danger" data-dialog-confirm="danger" data-id="{{product.uuid}}" data-token="{{ csrf_token }}"><i class="fa-solid fa-trash-can"></i> {% trans "remover" %}</a>
+                    {% endif %}
+                    <a href="/" class="btn btn-sm btn-cancel"><i class="fa-solid fa-xmark"></i> {% trans "Cancelar" %}</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock main %}
+
+{% block extra_body %}
+    {{ block.super }}
+    {% translate "ATENÇÃO! Ação Inreversível" as title %}
+    {% translate "Atenção! Essa ação é inreversível, então verifique novamente essa ação" as message %}
+    {% translate "REMOVER" as bt_confirm %}
+    {% include "components/dialog.html" with type="danger" title=title message=message bt_confirm=bt_confirm %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        dialog_onload(redirect="/");
+    });
+    </script>
+{% endblock %}

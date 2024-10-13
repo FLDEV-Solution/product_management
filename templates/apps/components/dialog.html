@@ -1,0 +1,101 @@
+{% load i18n %}
+<!-- Dialog Background Overlay (hidden by default) -->
+<div id="dialog_{{type}}" style="display: none"> 
+    <div class="dialog">
+        <!-- Dialog Container -->
+        <div class="dialog-container">
+            <!-- Dialog Header -->
+            <div class="dialog-header dialog-header-{{type}}">
+                <h3>
+                {% if type == "warning"%}
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                {% elif type == "success"%}
+                    <i class="fa-solid fa-circle-check"></i>
+                {% elif type == "danger"%}
+                    <i class="fa-solid fa-circle-xmark"></i>
+                {% endif %}
+                    <span>{{ title|default:"Alert Title: <code class='bg-gray-100'>with title='...'</code>" }}</span>
+                </h3>
+            </div>
+
+            <!-- Dialog Body -->
+            <div class="dialog-body">
+                <p class="text-gray-700">
+                {% if message is None %}
+                    {% blocktranslate %}
+                        Mensagem a ser apresentada no corpo do dialogo, quando incluir o template pode alterar os textos informando conforme abaixo: 
+                    {% endblocktranslate %}
+                    <code class='bg-gray-100 block p-4 rounded-lg mt-4'>
+                    {% verbatim %}
+                        {% include "components/dialog.html" with title='...' message='...' bt_cancel='...' bt_confirm='...' %}
+                    {% endverbatim %}
+                    </code>
+                {% else %}
+                    {{ message }}
+                {% endif %}
+            </div>
+
+            <!-- Dialog Footer -->
+            <div class="dialog-footer">
+                <button id="bt_cancel_{{type}}" class="px-4 py-2 btn btn-sm btn-cancel">{% trans bt_cancel|default:"CANCELAR" %}</button>
+                <button id="bt_confirm_{{type}}" class="px-4 py-2 btn btn-sm btn-{{type}}">{% trans bt_confirm|default:"CONFIRMAR" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function dialog_onload(redirect) {
+    
+    const bt_cancel = document.getElementById("bt_cancel_{{type}}");
+    bt_cancel.addEventListener("click", function() {
+        const dialog = document.getElementById("dialog_{{type}}");
+        dialog.style.display = "none";
+        const bt_confirm = document.getElementById("bt_confirm_{{type}}");
+        bt_confirm.removeAttribute("data-id");
+        bt_confirm.removeAttribute("data-token");
+    });
+
+    const delele_elements = document.querySelectorAll('[data-dialog-confirm]');
+    delele_elements.forEach(function(element) {
+        element.addEventListener("click", function() {
+            const dialog = document.getElementById("dialog_{{type}}");
+            dialog.style.display = "block";
+
+            const id = element.getAttribute("data-id");
+            const token = element.getAttribute("data-token");
+
+            const bt_confirm = document.getElementById("bt_confirm_{{type}}");
+            bt_confirm.setAttribute("data-id", id)
+            bt_confirm.setAttribute("data-token", token)
+        });
+    });
+
+    const bt_confirm = document.getElementById("bt_confirm_{{type}}");
+    bt_confirm.addEventListener("click", function() {
+        fetch(`/product/${bt_confirm.getAttribute("data-id")}/delete`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': bt_confirm.getAttribute("data-token"),
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const dialog = document.getElementById("dialog_{{type}}");
+                dialog.style.display = "none";
+                if(redirect) {
+                    window.location.href = redirect;
+                } else {
+                    location.reload(true);
+                }
+            } else {
+                alert('Delete failed.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+
+}
+</script>

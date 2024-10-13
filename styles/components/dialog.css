@@ -1,0 +1,56 @@
+
+@layer components {
+    .dialog {
+        @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+        
+        .dialog-container {
+            @apply bg-white rounded-lg shadow-lg w-1/3;
+
+            .dialog-header {
+                @apply px-6 py-2 border-b rounded-t-lg;
+
+                h3 {
+                    @apply font-semibold flex items-center;
+
+                    i {
+                        @apply mr-3 text-3xl;
+                    }
+
+                    span {
+                        @apply text-lg;
+                    }
+                }
+
+                &.dialog-header-success {
+                    @apply bg-green-100;
+                    h3 {
+                        @apply text-green-700;
+                    }
+                }
+
+                &.dialog-header-warning {
+                    @apply bg-yellow-100;
+                    h3 {
+                        @apply text-yellow-700;
+                    }
+                }
+
+                &.dialog-header-danger {
+                    @apply bg-red-100;
+                    h3 {
+                        @apply text-red-700;
+                    }
+                }
+
+            }
+
+            .dialog-body {
+                @apply px-6 py-4;
+            }
+
+            .dialog-footer {
+                @apply px-6 py-2 border-t flex justify-end space-x-4;
+            }
+        }
+    }
+}

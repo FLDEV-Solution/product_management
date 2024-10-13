@@ -1,6 +1,7 @@
 @import "components/form.css";
 @import "components/alert.css";
 @import "components/button.css";
+@import "components/dialog.css";
 
 @tailwind base;
 @tailwind components;
@@ -65,4 +66,13 @@
         @apply text-2xl font-bold leading-9 tracking-tight text-gray-900;
     }
 
+    .logo {
+        @apply font-extrabold text-blue-800 text-2xl hover:no-underline;
+    }
+
+    .brand {
+        @apply font-extrabold text-sky-700 text-xl hover:no-underline;
+    }
+
 }
+

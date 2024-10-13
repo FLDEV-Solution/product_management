@@ -77,7 +77,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / "../templates/allauth",
-            BASE_DIR / "../templates/apps"
+            BASE_DIR / "../templates/apps",
+            BASE_DIR / "../templates/third-party"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
