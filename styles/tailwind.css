@@ -9,7 +9,11 @@
 
 @layer base {
     a {
-        @apply text-sky-600 font-semibold hover:underline;
+        @apply text-sky-600 font-semibold hover:underline text-lg;
+    }
+
+    p {
+        @apply text-lg;
     }
 }
 

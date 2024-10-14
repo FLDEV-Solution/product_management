@@ -20,7 +20,14 @@ def create(request):
 
 @login_required
 def read(request, uuid=None):
-    pass
+    product = get_object_or_404(Product, uuid=uuid)
+    return render(
+        request=request, 
+        template_name="read.html",
+        context={
+            'product': product, 'uuid': uuid
+        }
+    )
 
 
 @login_required

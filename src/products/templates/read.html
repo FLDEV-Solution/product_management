@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}
+    {% trans "Produto" %}
+{% endblock head_title %}
+
+{% block header %}
+    {% user_display user as user_display %}
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            {% trans "Produto" %}
+        </h1>
+    </div>
+{% endblock header %}
+
+{% block main %}
+<div class="grid grid-cols-1">
+
+        <div class="flex justify-between items-center mb-2">
+            <h2>
+                <i class="fa-solid fa-layer-group"></i> {{ product.name }}
+            </h2>
+            <div class="btn-actions btn-actions-right">
+                <a href="/" class="btn btn-sm btn-cancel"><i class="fa-solid fa-chevron-left"></i> {% trans "Voltar" %}</a>
+            </div>
+        </div>
+
+        <div class="border rounded-md p-2"><div id="product_content"></div></div>
+
+</div>
+{% endblock main %}
+
+{% block extra_body %}
+    {{ block.super }}
+    {% translate "ATENÇÃO! Ação Inreversível" as title %}
+    {% translate "Atenção! Essa ação é inreversível, então verifique novamente essa ação" as message %}
+    {% translate "REMOVER" as bt_confirm %}
+    {% include "components/dialog.html" with type="danger" title=title message=message bt_confirm=bt_confirm %}
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        dialog_onload(redirect="/");
+
+        var quill = new Quill('#product_content', {
+            readOnly: true,
+            theme: 'bubble',
+            modules: {
+                toolbar: null
+            }
+        });
+        quill.setContents({{product.description|safe}});
+    });
+    </script>
+{% endblock %}
